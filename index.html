@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <!-- Reliable Engines (deferred for initial load speed) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js" defer></script>
@@ -577,27 +580,36 @@
             max-width: 1200px;
             margin: 0 auto;
             width: 90%;
+            box-sizing: border-box;
         }
         section {
             padding: 120px 0;
-            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
+            box-sizing: border-box;
         }
 
         /* ========== HERO ========== */
         #home {
-            height: 100vh;
+            min-height: 100dvh;
+            height: auto;
             text-align: left;
             position: relative;
-            padding-top: 80px;
+            padding-top: 100px;
+            padding-bottom: 60px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .hero-content {
             position: relative;
             z-index: 2;
             will-change: transform, opacity;
+            width: 100%;
         }
         .hero-tag {
             color: var(--accent);
@@ -617,7 +629,7 @@
         .hero-name {
             font-size: clamp(4rem, 10vw, 8rem);
             font-weight: 900;
-            line-height: 0.9;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
             letter-spacing: -4px;
             background: linear-gradient(to right, #fff 0%, #a1a1aa 100%);
@@ -634,7 +646,8 @@
             font-size: clamp(1.5rem, 4vw, 3rem);
             font-weight: 700;
             color: var(--text-primary);
-            height: 4rem;
+            min-height: 4rem;
+            height: auto;
             margin-bottom: 1rem;
         }
         .hero-description {
@@ -1168,16 +1181,17 @@
             background: var(--surface-hover);
         }
         .contact-info-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            background: rgba(34, 211, 238, 0.1);
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: var(--gradient-1);
+            color: #000;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             flex-shrink: 0;
-            border: 1px solid rgba(34, 211, 238, 0.2);
+            box-shadow: 0 10px 20px -5px rgba(34, 211, 238, 0.4);
         }
         .contact-info-text h4 {
             font-size: 0.75rem;
@@ -1188,24 +1202,25 @@
             margin-bottom: 0.2rem;
         }
         .contact-info-text span {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-primary);
+            word-break: break-all;
         }
         .contact-form-section {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 2rem;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 24px;
         }
         .contact-form-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
+            margin-bottom: 2rem;
+            color: #fff;
         }
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
         }
         .form-label {
             display: block;
@@ -1214,30 +1229,29 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
         .form-input,
         .form-textarea {
             width: 100%;
-            padding: 0.9rem 1rem;
+            padding: 1rem 1.2rem;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s var(--ease-out-expo);
-            resize: vertical;
         }
         .form-input:focus,
         .form-textarea:focus {
             border-color: var(--accent);
+            background: rgba(34, 211, 238, 0.05);
             outline: none;
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
-            background: rgba(255, 255, 255, 0.05);
         }
         .form-textarea {
-            min-height: 110px;
+            min-height: 120px;
+            resize: vertical;
         }
         .submit-btn {
             width: 100%;
@@ -1247,25 +1261,31 @@
             border: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.4s var(--ease-spring);
-            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
         }
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 50px rgba(34, 211, 238, 0.4);
+            box-shadow: 0 20px 40px rgba(34, 211, 238, 0.3);
         }
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             margin-top: 3rem;
             flex-wrap: wrap;
         }
         .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 600;
@@ -1273,9 +1293,9 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: all 0.3s var(--ease-out-expo);
-            padding: 0.7rem 1.4rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 50px;
         }
         .social-link:hover {
@@ -1283,7 +1303,6 @@
             border-color: var(--accent);
             background: rgba(34, 211, 238, 0.05);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.1);
         }
 
         /* ========== FOOTER ========== */
@@ -1374,7 +1393,7 @@
         /* ========== RESPONSIVE FINE-TUNING ========== */
         @media (max-width: 992px) {
             section { padding: 100px 0; }
-            .about-content { gap: 3rem; }
+            .about-content { grid-template-columns: 1fr; gap: 3rem; }
             .project-grid { grid-template-columns: 1fr; max-width: 600px; }
             .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
         }
@@ -1434,11 +1453,10 @@
         }
 
         @media (max-width: 480px) {
-            .hero-name { font-size: 2.5rem !important; letter-spacing: -2px; }
+            .hero-name { font-size: clamp(2.5rem, 10vw, 3.5rem) !important; letter-spacing: -1px; }
             .hero-tag { font-size: 0.65rem; padding: 0.3rem 0.8rem; }
             .about-stats { grid-template-columns: 1fr; }
-            .skills-grid { max-width: 100%; }
-            .project-grid { max-width: 100%; }
+            .skills-grid, .project-grid { grid-template-columns: 1fr; max-width: 100%; }
         }
     </style>
 </head>
@@ -1502,7 +1520,7 @@
 
     <!-- NAVIGATION -->
     <nav id="navbar">
-        <a href="#home" class="nav-logo">NK</a>
+        <a href="#home" class="nav-logo">PROFILE</a>
         <div class="nav-right">
             <div class="nav-links" id="navLinks">
                 <a href="#home">Home</a>
@@ -1529,7 +1547,7 @@
         <section id="home">
             <div class="container">
                 <div class="hero-content">
-                    <span class="hero-tag">🚀 SYSTEM_READY</span>
+                    <span class="hero-tag">🚀 SYSTEM <span> </span>  READY</span>
                     <h1 class="hero-name">NITIN<br>KUMAR</h1>
                     <div class="hero-typewriter" id="typewriter"></div>
                     <p class="hero-description">Second-year ECE student at <strong>MANIT Bhopal</strong>. Engineering high‑performance algorithms, system security, and optical communication protocols.</p>
@@ -1614,29 +1632,66 @@
         <!-- CONTACT -->
         <section id="contact">
             <div class="container">
-                <div class="section-header reveal"><span class="section-number">[06]</span><h2 class="section-title">Get In Touch</h2><div class="section-line"></div></div>
+                <div class="section-header reveal"><span class="section-number">[06]</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="section-line"></div>
+                </div>
                 <div class="contact-wrapper reveal">
                     <div class="contact-info-section">
-                        <a href="mailto:nitinkumargupta613@gmail.com" class="contact-info-card"><div class="contact-info-icon">📧</div><div class="contact-info-text"><h4>Email</h4><span>nitinkumargupta613@gmail.com</span></div></a>
-                        <a href="tel:+917870970840" class="contact-info-card"><div class="contact-info-icon">📱</div><div class="contact-info-text"><h4>Phone</h4><span>+91 7870970840</span></div></a>
-                        <a href="https://linkedin.com/in/nitinnitb" target="_blank" class="contact-info-card"><div class="contact-info-icon">💼</div><div class="contact-info-text"><h4>LinkedIn</h4><span>linkedin.com/in/nitinnitb</span></div></a>
-                        <a href="https://github.com/nitinkumargupta613-tech" target="_blank" class="contact-info-card"><div class="contact-info-icon">🐙</div><div class="contact-info-text"><h4>GitHub</h4><span>nitinkumargupta613-tech</span></div></a>
+                        <a href="mailto:nitinkumargupta613@gmail.com" class="contact-info-card">
+                            <div class="contact-info-icon"><i class="ph-bold ph-envelope"></i></div>
+                            <div class="contact-info-text">
+                                <h4>Email</h4><span>nitinkumargupta613@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="tel:+917870970840" class="contact-info-card">
+                            <div class="contact-info-icon"><i class="ph-bold ph-phone"></i></div>
+                            <div class="contact-info-text">
+                                <h4>Phone</h4><span>+91 7870970840</span>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/nitinnitb" target="_blank" class="contact-info-card">
+                            <div class="contact-info-icon"><i class="ph-bold ph-linkedin-logo"></i></div>
+                            <div class="contact-info-text">
+                                <h4>LinkedIn</h4><span>linkedin.com/in/nitinnitb</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/nitinkumargupta613-tech" target="_blank" class="contact-info-card">
+                            <div class="contact-info-icon"><i class="ph-bold ph-github-logo"></i></div>
+                            <div class="contact-info-text">
+                                <h4>GitHub</h4><span>nitinkumargupta613-tech</span>
+                            </div>
+                        </a>
                     </div>
                     <div class="contact-form-section">
                         <h3 class="contact-form-title">Send a Message</h3>
                         <form id="contactForm" onsubmit="handleSubmit(event)">
-                            <div class="form-group"><label class="form-label" for="name">Name</label><input type="text" id="name" class="form-input" placeholder="Your name" required></div>
-                            <div class="form-group"><label class="form-label" for="email">Email</label><input type="email" id="email" class="form-input" placeholder="your@email.com" required></div>
-                            <div class="form-group"><label class="form-label" for="message">Message</label><textarea id="message" class="form-textarea" placeholder="Tell me about your project or idea..." required></textarea></div>
-                            <button type="submit" class="submit-btn">Send Message →</button>
+                            <div class="form-group"><label class="form-label" for="name">Name</label><input type="text"
+                                    id="name" class="form-input" placeholder="Your name" required></div>
+                            <div class="form-group"><label class="form-label" for="email">Email</label><input
+                                    type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group"><label class="form-label" for="message">Message</label><textarea
+                                    id="message" class="form-textarea"
+                                    placeholder="Tell me about your project or idea..." required></textarea></div>
+                            <button type="submit" class="submit-btn">Send Message <i class="ph-bold ph-arrow-right"></i></button>
                         </form>
                     </div>
+                </div>
+
+                <div class="social-links reveal">
+                    <a href="https://linkedin.com/in/nitinnitb" target="_blank" class="social-link">
+                        <i class="ph-bold ph-linkedin-logo"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/nitinkumargupta613-tech" target="_blank" class="social-link">
+                        <i class="ph-bold ph-github-logo"></i> GitHub
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">© 2026 NITIN KUMAR • MANIT'29</footer>
+    <footer class="footer">© 2026 NITIN KUMAR | MANIT'29</footer>
 
     <script>
         const RESUME_RAW_URL = 'https://raw.githubusercontent.com/nitinkumargupta613-tech/My_Portfolio/main/resume.pdf';
@@ -1786,9 +1841,6 @@
         // ========== UI: NAVBAR, REVEAL (no staggering) ==========
         window.addEventListener('scroll', ()=>{
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>50);
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-content');
-            if(hero){ hero.style.transform=`translateY(${scrolled*0.15}px)`; hero.style.opacity=1-(scrolled/(innerHeight*0.8)); }
         });
         const mobileBtn = document.getElementById('mobileMenuBtn');
         const navLinksEl = document.getElementById('navLinks');
@@ -1803,7 +1855,7 @@
 
         function revealElements(){
             document.querySelectorAll('.reveal').forEach(el=>{
-                if(el.getBoundingClientRect().top < innerHeight - 80){
+                if(el.getBoundingClientRect().top < innerHeight - 20){
                     el.style.transitionDelay = '0.05s';  // same tiny delay for all
                     el.classList.add('visible');
                 }
